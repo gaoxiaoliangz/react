@@ -17,6 +17,9 @@ import {
 import type {FrontendBridge} from 'react-devtools-shared/src/bridge';
 import type {Props} from 'react-devtools-shared/src/devtools/views/DevTools';
 
+let currentStore: Store;
+let currentBridge: FrontendBridge;
+
 export function initialize(
   contentWindow: window,
 ): React.AbstractComponent<Props, mixed> {
@@ -64,8 +67,10 @@ export function initialize(
       contentWindow.postMessage({event, payload}, '*', transferable);
     },
   });
+  currentBridge = bridge;
 
   const store: Store = new Store(bridge, {supportsTraceUpdates: true});
+  currentStore = store;
 
   const ForwardRef = forwardRef<Props, mixed>((props, ref) => (
     <DevTools ref={ref} bridge={bridge} store={store} {...props} />
@@ -74,3 +79,7 @@ export function initialize(
 
   return ForwardRef;
 }
+
+export const getStore = () => currentStore;
+
+export const getBridge = () => currentBridge;
