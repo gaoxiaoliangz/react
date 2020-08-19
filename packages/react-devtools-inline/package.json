@@ -1,6 +1,6 @@
 {
   "name": "@dp/react-devtools-inline",
-  "version": "4.4.0-fork.0",
+  "version": "4.4.0-fork.1",
   "description": "Embed react-devtools within a website",
   "license": "MIT",
   "main": "./dist/backend.js",
