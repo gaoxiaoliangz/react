@@ -15,7 +15,9 @@ import {
 } from './constants';
 
 import type {FrontendBridge} from 'react-devtools-shared/src/bridge';
-import type {Props} from 'react-devtools-shared/src/devtools/views/DevTools';
+import type { Props } from 'react-devtools-shared/src/devtools/views/DevTools';
+
+export {prepareProfilingDataFrontendFromExport} from 'react-devtools-shared/src/devtools/views/Profiler/utils'
 
 let currentStore: Store;
 let currentBridge: FrontendBridge;
@@ -83,3 +85,5 @@ export function initialize(
 export const getStore = () => currentStore;
 
 export const getBridge = () => currentBridge;
+
+export { DevTools, Bridge, Store }
